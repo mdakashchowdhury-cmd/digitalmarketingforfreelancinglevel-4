@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Marketing Exam – Level 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060b18;
+  --s1: #0d1526;
+  --s2: #131f35;
+  --card: #16213e;
+  --border: #1e3055;
+  --border2: #2a4070;
+  --a1: #3b82f6;
+  --a2: #06b6d4;
+  --a3: #8b5cf6;
+  --green: #22c55e;
+  --red: #f43f5e;
+  --yellow: #eab308;
+  --orange: #f97316;
+  --txt: #e2eaf8;
+  --muted: #6b83a6;
+  --r: 16px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);color:var(--txt);
+  min-height:100vh;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 900px 600px at 15% 5%, rgba(59,130,246,0.09) 0%,transparent 70%),
+    radial-gradient(ellipse 700px 500px at 85% 95%, rgba(139,92,246,0.09) 0%,transparent 70%),
+    radial-gradient(ellipse 500px 400px at 55% 50%, rgba(6,182,212,0.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* ─── SECTIONS ─── */
+.section{display:none;position:relative;z-index:1;}
+.section.active{display:block;}
+
+/* ─── COVER ─── */
+#cover{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 20px;text-align:center;
+}
+.logo-strip{
+  display:flex;align-items:center;gap:10px;margin-bottom:36px;
+  background:var(--s2);border:1px solid var(--border);
+  border-radius:50px;padding:8px 20px;
+}
+.logo-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));}
+.logo-txt{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.cover-eyebrow{
+  font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--a2);margin-bottom:16px;
+}
+.cover-h1{
+  font-size:clamp(32px,6vw,64px);font-weight:800;line-height:1.1;
+  margin-bottom:12px;
+  background:linear-gradient(135deg,#fff 0%,rgba(59,130,246,0.9) 60%,rgba(6,182,212,0.8) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.cover-sub{font-size:clamp(14px,2vw,17px);color:var(--muted);font-weight:400;margin-bottom:6px;}
+.cover-trainer{font-size:13px;color:var(--a1);font-weight:600;margin-bottom:48px;letter-spacing:.5px;}
+.chips{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:48px;}
+.chip{
+  background:var(--s2);border:1px solid var(--border);
+  border-radius:12px;padding:16px 26px;text-align:center;min-width:90px;
+}
+.chip-val{font-size:26px;font-weight:800;font-family:'Space Mono',monospace;
+  background:linear-gradient(135deg,var(--a1),var(--a2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.chip-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;}
+
+/* ─── REGISTRATION CARD ─── */
+.reg-card{
+  background:var(--card);border:1px solid var(--border2);border-radius:20px;
+  padding:36px 40px;max-width:460px;width:100%;text-align:left;margin:0 auto;
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+.reg-card h3{font-size:17px;font-weight:700;margin-bottom:6px;color:#fff;}
+.reg-card p{font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+.form-group{margin-bottom:20px;}
+.form-group label{
+  display:block;font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1.5px;color:var(--a2);margin-bottom:8px;
+}
+.form-group input{
+  width:100%;background:var(--s1);border:1.5px solid var(--border);
+  border-radius:10px;padding:13px 16px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:500;
+  color:var(--txt);outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.form-group input:focus{border-color:var(--a1);box-shadow:0 0 0 3px rgba(59,130,246,0.15);}
+.form-group input::placeholder{color:var(--muted);}
+.err-msg{font-size:12px;color:var(--red);margin-top:6px;display:none;}
+.btn-start{
+  width:100%;background:linear-gradient(135deg,var(--a3),var(--a1),var(--a2));
+  color:#fff;border:none;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;
+  padding:15px;border-radius:12px;
+  box-shadow:0 8px 30px rgba(59,130,246,0.35);
+  transition:transform .2s,box-shadow .2s;letter-spacing:.3px;margin-top:8px;
+}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(59,130,246,0.45);}
+
+/* ─── EXAM ─── */
+.exam-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(6,11,24,0.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:12px 24px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.exam-brand{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--a1);text-transform:uppercase;white-space:nowrap;}
+.exam-applicant{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;}
+.h-spacer{flex:1;}
+.prog-wrap{min-width:100px;max-width:220px;flex:1;}
+.prog-bg{background:var(--border);border-radius:50px;height:5px;}
+.prog-fill{background:linear-gradient(90deg,var(--a3),var(--a1),var(--a2));height:5px;border-radius:50px;transition:width .4s;}
+.prog-txt{font-size:10px;color:var(--muted);margin-top:4px;text-align:right;}
+.timer-wrap{
+  display:flex;align-items:center;gap:8px;
+  background:var(--s2);border:1px solid var(--border);
+  border-radius:10px;padding:8px 16px;
+  font-family:'Space Mono',monospace;font-size:18px;font-weight:700;
+  transition:border-color .3s,color .3s;white-space:nowrap;
+}
+.t-pulse{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.timer-wrap.warn{color:var(--yellow);border-color:var(--yellow);}
+.timer-wrap.warn .t-pulse{background:var(--yellow);}
+.timer-wrap.danger{color:var(--red);border-color:var(--red);animation:shake .5s infinite;}
+.timer-wrap.danger .t-pulse{background:var(--red);}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+
+.q-wrap{padding:28px 20px 40px;max-width:860px;margin:0 auto;}
+.q-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:26px 28px;margin-bottom:18px;
+  animation:up .35s ease both;
+}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.q-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.q-badge{
+  background:linear-gradient(135deg,var(--a3),var(--a1));
+  color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;padding:4px 12px;border-radius:50px;white-space:nowrap;
+}
+.q-line{flex:1;height:1px;background:var(--border);}
+.q-txt{font-size:14px;font-weight:600;line-height:1.65;margin-bottom:16px;color:var(--txt);}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--s1);border:1.5px solid var(--border);
+  border-radius:10px;padding:12px 14px;cursor:pointer;
+  transition:all .17s;user-select:none;
+}
+.opt:hover{border-color:var(--a1);background:rgba(59,130,246,0.06);}
+.opt.sel{border-color:var(--a3);background:rgba(139,92,246,0.12);}
+.opt-ltr{
+  width:26px;height:26px;border-radius:7px;flex-shrink:0;
+  background:var(--border);display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:var(--muted);transition:all .17s;
+}
+.opt.sel .opt-ltr{background:var(--a3);color:#fff;}
+.opt-t{font-size:13px;line-height:1.55;padding-top:4px;}
+
+.sub-area{text-align:center;padding:0 20px 60px;max-width:860px;margin:0 auto;}
+.btn-sub{
+  background:linear-gradient(135deg,var(--a3),var(--a1),var(--a2));
+  color:#fff;border:none;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;
+  padding:15px 64px;border-radius:50px;
+  box-shadow:0 8px 30px rgba(59,130,246,0.3);transition:transform .2s,box-shadow .2s;
+}
+.btn-sub:hover{transform:translateY(-2px);}
+
+/* ─── RESULT ─── */
+#result{padding:0 0 80px;}
+.res-hero{
+  background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.08));
+  border-bottom:1px solid var(--border);
+  padding:56px 20px 48px;text-align:center;
+}
+.res-name{font-size:13px;color:var(--a2);font-weight:600;letter-spacing:1px;margin-bottom:6px;}
+.score-ring{
+  width:170px;height:170px;border-radius:50%;
+  border:5px solid transparent;margin:20px auto 24px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;
+}
+.score-ring::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(var(--ring-color,var(--a1)) var(--ring-pct,0%), var(--border) 0%);
+  -webkit-mask:radial-gradient(farthest-side,transparent 65%,black 66%);
+  mask:radial-gradient(farthest-side,transparent 65%,black 66%);
+}
+.score-ring::after{
+  content:'';position:absolute;inset:8px;border-radius:50%;
+  background:var(--card);z-index:-1;
+}
+.score-n{font-size:48px;font-weight:800;font-family:'Space Mono',monospace;line-height:1;}
+.score-d{font-size:13px;color:var(--muted);margin-top:4px;}
+.res-title{font-size:clamp(20px,3vw,30px);font-weight:800;margin-bottom:10px;}
+.grade-pill{
+  display:inline-block;padding:7px 22px;border-radius:50px;
+  font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;
+}
+.res-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px;}
+.s-box{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:16px 24px;text-align:center;}
+.s-val{font-size:24px;font-weight:800;font-family:'Space Mono',monospace;}
+.s-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;}
+.g1{color:var(--green);}
+.g2{color:var(--red);}
+.g3{color:var(--muted);}
+.g4{color:var(--a2);}
+
+.res-body{max-width:820px;margin:0 auto;padding:40px 20px 0;}
+.rev-head{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);
+  margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);
+}
+.rev-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:20px 22px;margin-bottom:14px;
+}
+.rev-card.ok{border-left:4px solid var(--green);}
+.rev-card.no{border-left:4px solid var(--red);}
+.rev-card.skip{border-left:4px solid var(--muted);}
+.rev-q{font-size:13px;font-weight:600;line-height:1.6;margin-bottom:10px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
+.rev-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 10px;border-radius:50px;white-space:nowrap;flex-shrink:0;}
+.rb-ok{background:rgba(34,197,94,.15);color:var(--green);}
+.rb-no{background:rgba(244,63,94,.15);color:var(--red);}
+.rb-sk{background:rgba(107,131,166,.15);color:var(--muted);}
+.rev-ans{font-size:12px;margin-bottom:4px;}
+.rev-ans .lbl{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-right:6px;}
+.ca{color:var(--green);font-weight:600;}
+.wa{color:var(--red);font-weight:600;}
+
+.btn-retry{
+  background:linear-gradient(135deg,var(--a3),var(--a1),var(--a2));
+  color:#fff;border:none;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;
+  padding:14px 48px;border-radius:50px;
+  box-shadow:0 8px 28px rgba(59,130,246,0.3);transition:transform .2s;margin-top:36px;
+}
+.btn-retry:hover{transform:translateY(-2px);}
+
+@media(max-width:600px){
+  .reg-card{padding:26px 20px;}
+  .exam-header{padding:10px 12px;gap:10px;}
+  .q-wrap,.sub-area{padding-left:12px;padding-right:12px;}
+  .q-card{padding:16px;}
+  .exam-applicant{max-width:110px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ COVER ══════ -->
+<div id="cover" class="section active">
+  <div class="logo-strip">
+    <div class="logo-dot"></div>
+    <div class="logo-txt">NSDA · E-Learning &amp; Earning Ltd-Shariatpur (Gosairhat)</div>
+  </div>
+  <div class="cover-eyebrow">Formative Assessment – 2</div>
+  <h1 class="cover-h1">Digital Marketing<br>for Freelancing</h1>
+  <p class="cover-sub">Level 4 &nbsp;·&nbsp; Written Assessment</p>
+  <p class="cover-trainer">Trainer: MD Akash Chowdhury</p>
+  <div class="chips">
+    <div class="chip"><div class="chip-val">60</div><div class="chip-lbl">Questions</div></div>
+    <div class="chip"><div class="chip-val">60</div><div class="chip-lbl">Minutes</div></div>
+    <div class="chip"><div class="chip-val">MCQ</div><div class="chip-lbl">Type</div></div>
+    <div class="chip"><div class="chip-val">1</div><div class="chip-lbl">Mark Each</div></div>
+  </div>
+
+  <div class="reg-card">
+    <h3>Applicant Registration</h3>
+    <p>Please enter your details before starting the exam. Your name will appear on the result.</p>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="inp-name" placeholder="e.g. MD Akash Chowdhury" autocomplete="name">
+      <div class="err-msg" id="err-name">Please enter your full name.</div>
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" id="inp-phone" placeholder="e.g. 01712345678" autocomplete="tel">
+      <div class="err-msg" id="err-phone">Please enter a valid phone number.</div>
+    </div>
+    <button class="btn-start" onclick="validateAndStart()">▶ &nbsp; Start Exam</button>
+  </div>
+</div>
+
+<!-- ══════ EXAM ══════ -->
+<div id="exam" class="section">
+  <div class="exam-header">
+    <div>
+      <div class="exam-brand">DMF Level 4 – FA2</div>
+      <div class="exam-applicant" id="hdr-name">—</div>
+    </div>
+    <div class="h-spacer"></div>
+    <div class="prog-wrap">
+      <div class="prog-bg"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+      <div class="prog-txt" id="progTxt">0 / 60 answered</div>
+    </div>
+    <div class="timer-wrap" id="timerWrap"><div class="t-pulse"></div><span id="timer">60:00</span></div>
+  </div>
+  <div class="q-wrap" id="qWrap"></div>
+  <div class="sub-area">
+    <button class="btn-sub" onclick="submitExam()">Submit Exam</button>
+  </div>
+</div>
+
+<!-- ══════ RESULT ══════ -->
+<div id="result" class="section">
+  <div class="res-hero">
+    <div class="res-name" id="res-name-top">—</div>
+    <div class="score-ring" id="scoreRing">
+      <div class="score-n" id="scoreN">0</div>
+      <div class="score-d">out of 60</div>
+    </div>
+    <h2 class="res-title" id="resTitle">—</h2>
+    <div class="grade-pill" id="gradeLabel">—</div>
+    <div style="font-size:13px;color:var(--muted);margin-top:6px;" id="resPhone">—</div>
+    <div class="res-stats">
+      <div class="s-box"><div class="s-val g1" id="stC">0</div><div class="s-lbl">Correct</div></div>
+      <div class="s-box"><div class="s-val g2" id="stW">0</div><div class="s-lbl">Wrong</div></div>
+      <div class="s-box"><div class="s-val g3" id="stS">0</div><div class="s-lbl">Skipped</div></div>
+      <div class="s-box"><div class="s-val g4" id="stP">0%</div><div class="s-lbl">Score</div></div>
+    </div>
+  </div>
+  <div class="res-body">
+    <div class="rev-head">Detailed Answer Review</div>
+    <div id="revCards"></div>
+    <div style="text-align:center">
+      <button class="btn-retry" onclick="retryExam()">↺ &nbsp; Try Again</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const QS = [
+  // ── PPC & Google Ads ──
+  {q:"What does PPC stand for?",opts:["Pay-Per-Click","Page-Per-Content","Post-Per-Campaign","Paid-Per-Conversion"],a:0},
+  {q:"Which of the following is NOT a Google Ads campaign type?",opts:["Search","Display","Viral","Shopping"],a:2},
+  {q:"What does 'impression' mean in Google Ads?",opts:["Number of clicks on an ad","Number of times an ad is displayed on screen","Revenue generated by an ad","Number of conversions"],a:1},
+  {q:"What is an 'Ad Group' in Google Ads?",opts:["A billing category","A set of ads sharing keywords and target audience within a campaign","A type of ad format","A reporting dashboard"],a:1},
+  {q:"What is the recommended daily budget for a Google Ads campaign?",opts:["$1–$5","$10–$20","$100–$200","$500–$1000"],a:1},
+  {q:"Which Google Ads campaign type uses AI-driven all-in-one campaign building?",opts:["Smart","Discovery","Performance Max","Local"],a:2},
+  {q:"What does ROAS stand for?",opts:["Return on Advertising Spend","Rate of Audience Share","Revenue over Ad Systems","Reach of Ad Strategy"],a:0},
+  {q:"How do you perform ROI analysis on a PPC campaign?",opts:["By counting impressions","By comparing campaign cost to revenue from conversions","By measuring bounce rate","By tracking email open rates"],a:1},
+  {q:"What is a Remarketing Audience?",opts:["First-time website visitors","Users who previously interacted with your website or app","Email newsletter subscribers","Social media followers"],a:1},
+  {q:"What is CTR and how is it calculated?",opts:["Cost-to-Revenue ratio; revenue ÷ cost","Click-Through Rate; clicks ÷ impressions × 100","Conversion rate; conversions ÷ clicks","Campaign Traffic Rate; sessions ÷ ads shown"],a:1},
+
+  // ── SEO ──
+  {q:"What is Search Engine Optimization (SEO)?",opts:["Paying Google to show ads","Improving a website's visibility in organic search results","Sending bulk emails","Creating viral social media posts"],a:1},
+  {q:"What is the difference between on-page and off-page SEO?",opts:["On-page uses paid ads; off-page is free","On-page optimizes site content; off-page builds backlinks and citations","On-page is for mobile; off-page is for desktop","They mean the same thing"],a:1},
+  {q:"What is a sitemap?",opts:["A visual website design tool","A file listing all important pages to help search engines crawl efficiently","A type of Google Analytics report","A keyword research method"],a:1},
+  {q:"How does page speed affect SEO rankings?",opts:["It has no effect on rankings","Slower pages rank higher due to more content load","Faster pages improve user experience and are favored by Google","Page speed only affects mobile rankings"],a:2},
+  {q:"What does HTTPS (SSL certificate) mean for SEO?",opts:["It blocks search engine crawlers","Google uses HTTPS as a ranking signal ensuring site security","It speeds up page loading automatically","It removes the need for sitemaps"],a:1},
+  {q:"Why are 404 errors harmful to SEO?",opts:["They increase page views","They waste crawl budget and damage user experience","They help Google index pages faster","They improve bounce rate"],a:1},
+  {q:"What is the role of internal linking in SEO?",opts:["To show ads within content","To guide users and crawlers to important pages and distribute authority","To collect visitor email addresses","To block certain pages from indexing"],a:1},
+  {q:"What is SEO-friendly content?",opts:["Content stuffed with as many keywords as possible","Content created to help search engines find, understand, and rank it high","Content published only on social media","Content written in multiple languages"],a:1},
+  {q:"What is the difference between Domain Authority (DA) and Page Authority (PA)?",opts:["DA = individual page strength; PA = whole domain","DA = whole domain ranking strength; PA = individual page strength","They measure the same thing","DA is for Google; PA is for Bing"],a:1},
+  {q:"What does submitting an XML sitemap to Google Search Console do?",opts:["Creates automatic backlinks","Ensures all site pages are discoverable and crawlable by Googlebot","Increases ad budget","Generates email subscriber lists"],a:1},
+
+  // ── Local SEO ──
+  {q:"What is Local SEO?",opts:["Optimizing a website to rank globally","Optimizing online presence to improve visibility in local geographic search results","Paying for local newspaper ads","Creating location-based videos"],a:1},
+  {q:"What does NAP stand for in Local SEO?",opts:["Network, Analytics, Page","Name, Age, Profile","Name, Address, Phone number","Niche, Authority, Proximity"],a:2},
+  {q:"What are the 3 primary ranking factors for Local SEO?",opts:["Speed, Security, Sitemap","Relevance, Proximity, Prominence","Keywords, Backlinks, Domain Age","Traffic, Reviews, Ads spend"],a:1},
+  {q:"Why are local citations important for Local SEO?",opts:["They create paid ad placements","They help Google verify business location and improve local rankings","They increase email open rates","They replace the need for a website"],a:1},
+  {q:"What is Google My Business (GMB) / Google Business Profile (GBP)?",opts:["A paid advertising platform","A free listing that helps businesses appear in Google Maps and local search results","A video marketing tool","A keyword research tool"],a:1},
+  {q:"What is the Google 3-Pack?",opts:["Three Google paid ad slots","The top 3 local business listings displayed in Google Maps search results","A bundle of 3 Google tools","Three recommended keywords"],a:1},
+  {q:"Why is mobile-friendliness important for Local SEO?",opts:["Mobile devices show more ads","Most local searches are done on mobile; Google prioritizes mobile-friendly sites","Mobile sites load slower","Mobile sites don't need SEO"],a:1},
+  {q:"What is structured data / schema markup used for in Local SEO?",opts:["To design website colors","To help search engines understand business details and display rich results","To block competitor websites","To automate email campaigns"],a:1},
+  {q:"How does mobile search influence Local SEO?",opts:["Mobile users ignore local results","Mobile searches prioritize location-based results increasing importance of local optimization","Mobile searches use different search engines","Mobile SEO is the same as desktop SEO"],a:1},
+  {q:"What pages should a local business website include?",opts:["Only a homepage","Homepage, Contact Us, Service pages, and About page","Only a blog and shop","Only a contact form"],a:1},
+
+  // ── Google Analytics & GSC ──
+  {q:"What type of analytics does Google Analytics provide?",opts:["Predictive and Prescriptive","Descriptive and Diagnostic","Cognitive and Automated","Financial and Operational"],a:1},
+  {q:"What is the 'Real-Time' reporting feature in Google Analytics?",opts:["Historical data from past 12 months","Future traffic predictions","Immediate data on current website activity like active users and their locations","Competitor website analysis"],a:2},
+  {q:"What is an example of a metric in Google Analytics?",opts:["Page title","Sessions — number of individual visits to your website","Website domain name","Ad creative"],a:1},
+  {q:"What is the difference between Bounce Rate and Exit Rate in Google Analytics?",opts:["They are the same metric","Bounce Rate = visitors leaving after one page; Exit Rate = % of exits from a specific page","Bounce Rate is for mobile; Exit Rate for desktop","Exit Rate measures ad clicks"],a:1},
+  {q:"What is Google Search Console (GSC)?",opts:["A paid advertising tool","A free web service to monitor website indexing and performance in Google Search","A social media analytics platform","An email marketing dashboard"],a:1},
+  {q:"How can Google Search Console help identify SEO penalties?",opts:["By showing competitor data","By monitoring manual actions and sudden ranking drops in GSC messages","By tracking social shares","By measuring email bounce rate"],a:1},
+  {q:"What are key features of Google Search Console?",opts:["Email campaign builder, social media scheduler","Search analytics, indexing status, sitemap submission, and crawl error resolution","Video editor and thumbnail maker","PPC bid management"],a:1},
+  {q:"How do you install Google Analytics on a website?",opts:["By paying Google monthly","By adding the GA tracking code snippet to the website HTML","By creating a YouTube channel","By setting up a GMB profile"],a:1},
+  {q:"What key metrics does Google Analytics track?",opts:["Only page views","Website traffic, user behavior, conversions, bounce rate, session duration, and demographics","Only social media shares","Only ad impressions"],a:1},
+  {q:"Why is Google Analytics important for digital marketing campaigns?",opts:["To replace social media","To track and analyze traffic, user behavior, and campaign performance for optimization","To create video ads","To send bulk emails"],a:1},
+
+  // ── Email Marketing ──
+  {q:"What is email marketing?",opts:["Sending physical letters","Using email to promote products/services, build customer relationships, and generate leads","Cold calling potential customers","Running paid social media ads"],a:1},
+  {q:"What is one major advantage of email marketing?",opts:["Requires large budget","High ROI and cost-effectiveness reaching large audiences at low cost","Cannot be personalized","Works only for large companies"],a:1},
+  {q:"What is a disadvantage of email marketing?",opts:["Too expensive for most businesses","Can lead to high unsubscribe rates if content is not relevant or engaging","Cannot track performance","Requires physical delivery"],a:1},
+  {q:"What are the types of emails used in email marketing?",opts:["Only newsletters","Promotional, transactional, newsletters, welcome emails, and drip campaigns","Only cold outreach emails","Only order confirmation emails"],a:1},
+  {q:"What is Bulk Email?",opts:["A personal one-to-one email","Sending a large volume of emails to many recipients simultaneously","An email with large file attachments","An encrypted email service"],a:1},
+  {q:"What is the purpose of an Email Marketing Funnel?",opts:["To design email templates","A strategy to guide subscribers through the buyer's journey from awareness to purchase","To collect social media followers","To manage email server settings"],a:1},
+  {q:"What is the role of email subject lines in marketing?",opts:["They are optional and rarely read","They capture recipient attention and encourage email opens, increasing open rates","They replace the email body content","They are only visible to the sender"],a:1},
+  {q:"What are legal issues to consider in email marketing?",opts:["Copyright of images only","Compliance with CAN-SPAM Act and GDPR requiring consent, opt-out options, and data protection","Font size regulations","Mobile device compatibility laws"],a:1},
+  {q:"What is targeted email marketing?",opts:["Sending the same email to all subscribers","Sending personalized emails to specific audience segments based on interests, behavior, or demographics","Sending emails at random times","Emailing competitors"],a:1},
+  {q:"Why should businesses avoid purchasing email lists?",opts:["They are too expensive","They cause low engagement, high spam complaints, and legal risks damaging sender reputation","They contain outdated fonts","They don't work on mobile"],a:1},
+
+  // ── Video Marketing & YouTube ──
+  {q:"What is video marketing?",opts:["Printing video ads in newspapers","Using video content to promote a brand/product, engage audiences, and drive conversions","Creating text-based blog posts","Sending video files via email only"],a:1},
+  {q:"What are YouTube monetization requirements (subscribers)?",opts:["500 subscribers","1,000 subscribers","5,000 subscribers","10,000 subscribers"],a:1},
+  {q:"How many watch hours are needed for YouTube monetization?",opts:["1,000 hours in any period","4,000 watch hours in the past 12 months","2,000 hours in 6 months","500 hours in 3 months"],a:1},
+  {q:"What is the importance of video thumbnails in YouTube marketing?",opts:["They determine video file size","They are the first visual impression and directly impact click-through rate and video performance","They replace video descriptions","They control video playback speed"],a:1},
+  {q:"Why do we use YouTube Cards?",opts:["To add subtitles","To promote related content, drive channel growth, and increase viewer engagement","To block certain viewers","To manage ad spend"],a:1},
+  {q:"What are the benefits of video marketing for businesses?",opts:["Only useful for entertainment companies","Higher conversion rates, improved SEO, increased engagement, enhanced brand visibility, better retention","Reduces website traffic","Replaces email marketing"],a:1},
+  {q:"What are ways to grow YouTube subscribers?",opts:["Buying fake subscribers","Creating quality content, optimizing titles/thumbnails, engaging with comments, promoting on social media","Posting only once a year","Disabling comments"],a:1},
+  {q:"What techniques apply for YouTube monetization beyond ads?",opts:["Only ad revenue is available","Sponsorships, merchandise, memberships, and affiliate marketing alongside the YouTube Partner Program","Selling the channel","Blocking all ads"],a:1},
+  {q:"Why is it important to review reports and analytics in video marketing?",opts:["To delete low-performing videos immediately","To identify trends, understand audience behavior, and make data-driven optimization decisions","To increase ad budget automatically","To change channel name"],a:1},
+  {q:"What is the role of Google My Business in helping a local business?",opts:["It manages PPC keyword bids","It helps businesses grow online presence, appear in Maps, and manage reviews, insights, and messages","It creates YouTube videos automatically","It sends bulk emails to nearby customers"],a:1},
+];
+
+let answers = new Array(60).fill(null);
+let tLeft = 60*60;
+let tInterval = null;
+let submitted = false;
+let applicantName = '';
+let applicantPhone = '';
+
+function validateAndStart(){
+  const nm = document.getElementById('inp-name').value.trim();
+  const ph = document.getElementById('inp-phone').value.trim();
+  let ok = true;
+  if(!nm){document.getElementById('err-name').style.display='block';ok=false;}
+  else document.getElementById('err-name').style.display='none';
+  if(!ph||ph.length<10){document.getElementById('err-phone').style.display='block';ok=false;}
+  else document.getElementById('err-phone').style.display='none';
+  if(!ok)return;
+  applicantName = nm;
+  applicantPhone = ph;
+  show('exam');
+  document.getElementById('hdr-name').textContent = nm;
+  renderQuestions();
+  startTimer();
+}
+
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function renderQuestions(){
+  const wrap = document.getElementById('qWrap');
+  wrap.innerHTML='';
+  QS.forEach((q,i)=>{
+    const d=document.createElement('div');
+    d.className='q-card';
+    d.style.animationDelay=(i*0.025)+'s';
+    d.innerHTML=`
+      <div class="q-head"><span class="q-badge">Q ${i+1}</span><div class="q-line"></div></div>
+      <div class="q-txt">${q.q}</div>
+      <div class="opts" id="o-${i}">
+        ${q.opts.map((o,j)=>`
+          <div class="opt" id="op-${i}-${j}" onclick="pick(${i},${j})">
+            <div class="opt-ltr">${String.fromCharCode(65+j)}</div>
+            <div class="opt-t">${o}</div>
+          </div>`).join('')}
+      </div>`;
+    wrap.appendChild(d);
+  });
+}
+
+function pick(qi,oi){
+  if(submitted)return;
+  if(answers[qi]!==null) document.getElementById(`op-${qi}-${answers[qi]}`).classList.remove('sel');
+  answers[qi]=oi;
+  document.getElementById(`op-${qi}-${oi}`).classList.add('sel');
+  updateProg();
+}
+
+function updateProg(){
+  const done=answers.filter(a=>a!==null).length;
+  const pct=(done/60)*100;
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progTxt').textContent=`${done} / 60 answered`;
+}
+
+function startTimer(){
+  tInterval=setInterval(()=>{
+    tLeft--;
+    const m=Math.floor(tLeft/60).toString().padStart(2,'0');
+    const s=(tLeft%60).toString().padStart(2,'0');
+    document.getElementById('timer').textContent=`${m}:${s}`;
+    const tw=document.getElementById('timerWrap');
+    tw.className='timer-wrap';
+    if(tLeft<=600)tw.classList.add('warn');
+    if(tLeft<=60){tw.classList.remove('warn');tw.classList.add('danger');}
+    if(tLeft<=0){clearInterval(tInterval);submitExam(true);}
+  },1000);
+}
+
+function submitExam(auto=false){
+  if(submitted)return;
+  if(!auto){
+    const done=answers.filter(a=>a!==null).length;
+    const left=60-done;
+    if(left>0&&!confirm(`${left} question(s) unanswered. Submit anyway?`))return;
+  }
+  submitted=true;
+  clearInterval(tInterval);
+  buildResult();
+}
+
+function buildResult(){
+  let cor=0,wrg=0,skp=0;
+  QS.forEach((q,i)=>{
+    if(answers[i]===null)skp++;
+    else if(answers[i]===q.a)cor++;
+    else wrg++;
+  });
+  const pct=Math.round((cor/60)*100);
+  const deg=Math.round((cor/60)*360);
+
+  // Score ring color
+  let rc='var(--red)';
+  if(pct>=80)rc='var(--green)';
+  else if(pct>=60)rc='var(--a2)';
+  else if(pct>=40)rc='var(--yellow)';
+
+  const ring=document.getElementById('scoreRing');
+  ring.style.setProperty('--ring-color',rc);
+  ring.style.setProperty('--ring-pct',deg+'deg');
+  ring.querySelector('.score-n').style.color=rc;
+
+  document.getElementById('scoreN').textContent=cor;
+  document.getElementById('res-name-top').textContent='📋  Result for: '+applicantName;
+  document.getElementById('resPhone').textContent='📞 '+applicantPhone;
+  document.getElementById('stC').textContent=cor;
+  document.getElementById('stW').textContent=wrg;
+  document.getElementById('stS').textContent=skp;
+  document.getElementById('stP').textContent=pct+'%';
+
+  let title,grade,gs;
+  if(pct>=80){title='🎉 Excellent Work, '+applicantName+'!';grade='A – Distinction';gs='background:rgba(34,197,94,.15);color:#22c55e;';}
+  else if(pct>=60){title='👍 Good Job, '+applicantName+'!';grade='B – Pass';gs='background:rgba(6,182,212,.12);color:#06b6d4;';}
+  else if(pct>=40){title='📚 Keep Studying, '+applicantName+'!';grade='C – Needs Improvement';gs='background:rgba(234,179,8,.15);color:#eab308;';}
+  else{title='💪 Try Again, '+applicantName+'!';grade='F – Not Passed';gs='background:rgba(244,63,94,.15);color:#f43f5e;';}
+
+  document.getElementById('resTitle').textContent=title;
+  const gl=document.getElementById('gradeLabel');
+  gl.textContent=grade;gl.style.cssText=gs;
+
+  const rv=document.getElementById('revCards');
+  rv.innerHTML='';
+  QS.forEach((q,i)=>{
+    const ua=answers[i];
+    const st=ua===null?'skip':ua===q.a?'ok':'no';
+    const badge=st==='ok'?'<span class="rev-badge rb-ok">✓ Correct</span>':
+                 st==='no'?'<span class="rev-badge rb-no">✗ Wrong</span>':
+                           '<span class="rev-badge rb-sk">– Skipped</span>';
+    const userLine=(ua!==null&&ua!==q.a)?`<div class="rev-ans"><span class="lbl">Your Answer:</span><span class="wa">${q.opts[ua]}</span></div>`:'';
+    const c=document.createElement('div');
+    c.className=`rev-card ${st}`;
+    c.innerHTML=`
+      <div class="rev-q"><span><strong>Q${i+1}.</strong> ${q.q}</span>${badge}</div>
+      ${userLine}
+      <div class="rev-ans"><span class="lbl">Correct:</span><span class="ca">${q.opts[q.a]}</span></div>`;
+    rv.appendChild(c);
+  });
+
+  show('result');
+}
+
+function retryExam(){
+  answers=new Array(60).fill(null);
+  tLeft=60*60;
+  submitted=false;
+  applicantName='';applicantPhone='';
+  document.getElementById('inp-name').value='';
+  document.getElementById('inp-phone').value='';
+  show('cover');
+}
+</script>
+</body>
+</html>
